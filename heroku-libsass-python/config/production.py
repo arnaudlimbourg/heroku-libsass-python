@@ -121,3 +121,6 @@ class Production(Common):
     # END CACHING
 
     # Your production stuff: Below this line define 3rd party library settings
+    PIPELINE_UGLIFYJS_BINARY = 'PATH=/app/.heroku/node/bin:$PATH /app/node_modules/.bin/uglifyjs'
+
+    PIPELINE_CSSMIN_BINARY = 'PATH=/app/.heroku/node/bin:$PATH /app/node_modules/.bin/cssmin'
