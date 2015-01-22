@@ -48,6 +48,7 @@ class Common(Configuration):
     LOCAL_APPS = (
         'users',  # custom users app
         # Your stuff: custom apps go here
+        'pipeline',  # assets management made easy
     )
 
     # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -269,3 +270,35 @@ class Common(Configuration):
         cls.DATABASES['default']['ATOMIC_REQUESTS'] = True
 
     # Your common stuff: Below this line define 3rd party library settings
+    PIPELINE_CSS = {
+        'general': {
+            'source_filenames': (
+                'sass/project.scss',
+            ),
+            'output_filename': 'css/general.css',
+            'extra_context': {
+                'media': 'screen',
+            },
+        },
+    }
+
+    PIPELINE_JS = {
+        'common': {
+            'source_filenames': (
+                'js/project.js',
+            ),
+            'output_filename': 'js/common.js',
+        }
+    }
+
+    PIPELINE_JS_COMPRESSOR = 'pipeline.compressors.uglifyjs.UglifyJSCompressor'
+
+    PIPELINE_CSS_COMPRESSOR = 'pipeline.compressors.cssmin.CSSMinCompressor'
+
+    PIPELINE_COMPILERS = (
+        'pipeline.compilers.sass.SASSCompiler',
+    )
+
+    PIPELINE_SASS_BINARY = 'sassc'
+
+    PIPELINE_SASS_ARGUMENTS = ''

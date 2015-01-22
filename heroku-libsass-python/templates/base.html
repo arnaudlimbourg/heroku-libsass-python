@@ -1,4 +1,6 @@
-{% load staticfiles i18n %}<!DOCTYPE html>
+{% load staticfiles i18n %}
+{% load pipeline %}
+<!DOCTYPE html>
 <html lang="en" ng-app>
   <head>
     <meta charset="utf-8">
@@ -22,7 +24,7 @@
     <!-- Your stuff: Third-party css libraries go here -->
 
     <!-- This file store project specific CSS -->
-    <link href="{% static 'css/project.css' %}" rel="stylesheet">
+    {% stylesheet 'general' %}
     {% endblock %}
 
     {% block angular %}
@@ -80,7 +82,7 @@
       <!-- Your stuff: Third-party javascript libraries go here -->
 
       <!-- place project specific Javascript in this file -->
-      <script src="{% static 'js/project.js' %}"></script>
+      {% javascript 'common' %}
     {% endblock javascript %}
   </body>
 </html>
