@@ -62,8 +62,9 @@ class Production(Common):
         'storages',
     )
 
-    # See: http://django-storages.readthedocs.org/en/latest/backends/amazon-S3.html#settings
-    STATICFILES_STORAGE = DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+    STATICFILES_STORAGE = 'heroku-libsass-python.WhiteNoisePipeline.WhiteNoisePipeline'
+
+    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 
     # See: http://django-storages.readthedocs.org/en/latest/backends/amazon-S3.html#settings
     AWS_ACCESS_KEY_ID = values.SecretValue()
@@ -84,7 +85,7 @@ class Production(Common):
     }
 
     # See: https://docs.djangoproject.com/en/dev/ref/settings/#static-url
-    STATIC_URL = 'https://s3.amazonaws.com/%s/' % AWS_STORAGE_BUCKET_NAME
+    STATIC_URL = values.SecretValue()
     # END STORAGE CONFIGURATION
 
     # EMAIL
