@@ -62,7 +62,7 @@ class Production(Common):
         'storages',
     )
 
-    STATICFILES_STORAGE = 'heroku-libsass-python.WhiteNoisePipeline.WhiteNoisePipeline'
+    STATICFILES_STORAGE = 'heroku-libsass-python.storage.WhiteNoisePipeline'
 
     DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 
